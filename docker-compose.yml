@@ -6,10 +6,9 @@ services:
     build:
       context: ./ollama
       dockerfile: Dockerfile
-    # ports:
-    #   - "11434:11434"
     volumes:
-      - ollama_data:/app
+      - ollama_data:/root/.ollama
+      - ./ollama_models:/root/custom_models
     networks:
       - net
   flowise:
@@ -50,8 +49,10 @@ services:
       PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
       DEFAULT_VECTORIZER_MODULE: 'none'
       ENABLE_MODULES: 'text2vec-cohere,text2vec-huggingface,text2vec-palm,text2vec-openai,generative-openai,generative-cohere,generative-palm,ref2vec-centroid,reranker-cohere,qna-openai'
-      CLUSTER_HOSTNAME: 'node1'
-
+      CLUSTER_HOSTNAME: 'weaviate'
+    networks:
+      - net
+     
 volumes:
   ollama_data:
     driver: local
