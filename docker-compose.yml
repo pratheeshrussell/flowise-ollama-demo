@@ -24,6 +24,7 @@ services:
         - '4505:4505'
       volumes:
         - ~/.flowise:/root/.flowise
+        - ./custom_data:/var/custom_data
       command: /bin/sh -c "sleep 3; flowise start"
       networks:
         - net
@@ -38,8 +39,6 @@ services:
       - --scheme
       - http
     image: semitechnologies/weaviate:1.23.3
-    ports:
-      - 50051:50051
     volumes:
       - weaviate_data:/var/lib/weaviate
     restart: on-failure:0

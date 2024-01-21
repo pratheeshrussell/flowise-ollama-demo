@@ -1,2 +1,7 @@
 ollama_models/**/*.*
 !ollama_models/.gitkeep
+
+custom_data/**/*.*
+!custom_data/.gitkeep
+
+test/**/*.*
