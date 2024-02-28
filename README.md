@@ -3,14 +3,14 @@ A Flowise-ollama demo
 
 ## Dockerfiles
 ### ollama
-Modify the dockerfile in ollama folder. Currently pulling orca-mini during build time.  
+Modify the dockerfile in ollama folder. Currently pulling gemma:2b model and all-minilm model during build time.  
   
-NOTE that this will pull the orca-mini models during build time itself
+NOTE that this will pull the gemma:2b models during build time itself
 
 ### flowise
 Image pulled directly from dockerhub.  The dockerfile in flowise folder is not used. You can use it if you need to make any customizations.
 
-### Weaviate
+### Qdrant
 Image pulled directly from dockerhub.  
 comment it in docker-compose if not needed
 
@@ -26,7 +26,9 @@ Only the port for flowise is accessible from outside the docker network. This is
 
 To access ollama from flowise container use the hostname **ollama** ie., *http://ollama:11434*   
 
-similarly, the weaviate container can be accessed with hostname **weaviate**, example, *weaviate:8080*    
+similarly, the qdrant container can be accessed with hostname **qdrant**, example, *qdrant:6333*    
+    
+qdrant dashboard can be accessed at **http://localhost:6333/dashboard#**  
 
 ## Adding documents with data
 Add your data to **custom_data** folder this will be mapped to **/var/custom_data** in flowise container. You can load it with **Folders with Files** document loader in flowise by specifying **/var/custom_data** or subfolders inside that

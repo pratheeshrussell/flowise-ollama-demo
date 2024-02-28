@@ -4,8 +4,9 @@ ENV OLLAMA_HOST "0.0.0.0"
 
 RUN apt install curl -y
 
-# ollama pull deepseek-coder
-RUN ollama serve & sleep 10 && echo "Pulling model..." && ollama pull orca-mini 
+# pull an llm and embedding model
+RUN ollama serve & sleep 10 && echo "Pulling model..." && ollama pull gemma:2b
+RUN ollama serve & sleep 10 && echo "Pulling embedding model..." && ollama pull all-minilm:l12-v2
 
 COPY entrypoint.sh /entrypoint.sh
 # Make the script executable
