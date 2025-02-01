@@ -1,4 +1,3 @@
-version: '3'
 services:
   ollama:
     hostname: ollama
@@ -29,7 +28,7 @@ services:
       volumes:
         - ~/.flowise:/root/.flowise
         - ./custom_data:/var/custom_data
-      command: /bin/sh -c "sleep 3; flowise start"
+      # command: /bin/sh -c "sleep 3; flowise start"
       networks:
         - net 
   qdrant:
